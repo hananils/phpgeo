@@ -147,10 +147,10 @@ class Bounds
     {
         $polygon = new Polygon();
 
-        $polygon->addPoint($this->getNorthWest);
-        $polygon->addPoint($this->getNorthEast);
-        $polygon->addPoint($this->getSouthEast);
-        $polygon->addPoint($this->getSouthWest);
+        $polygon->addPoint($this->getNorthWest());
+        $polygon->addPoint($this->getNorthEast());
+        $polygon->addPoint($this->getSouthEast());
+        $polygon->addPoint($this->getSouthWest());
 
         return $polygon;
     }
