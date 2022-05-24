@@ -70,11 +70,17 @@ trait IntersectionTrait
         $segments2 = $geometry->getSegments();
         $intersects = false;
 
-        while (!$intersects) {
-            foreach ($segments1 as $segment1) {
-                foreach ($segments2 as $segment2) {
-                    $intersects = $segment1->intersectsLine($segment2);
+        foreach ($segments1 as $segment1) {
+            foreach ($segments2 as $segment2) {
+                $intersects = $segment1->intersectsLine($segment2);
+
+                if ($intersects === true) {
+                    break;
                 }
+            }
+
+            if ($intersects === true) {
+                break;
             }
         }
 
