@@ -33,10 +33,22 @@ trait IntersectionTrait
         $bounds1 = $this->getBounds();
 
         if (
-            $direction->isEastOf($bounds1->getWest(), $bounds2->getEast()) ||
-            $direction->isSouthOf($bounds1->getNorth(), $bounds2->getSouth()) ||
-            $direction->isWestOf($bounds1->getEast(), $bounds2->getWest()) ||
-            $direction->isNorthOf($bounds1->getSouth(), $bounds2->getNorth())
+            $direction->isEastOf(
+                $bounds1->getSouthWest(),
+                $bounds2->getSouthEast()
+            ) ||
+            $direction->isSouthOf(
+                $bounds1->getNorthWest(),
+                $bounds2->getSouthWest()
+            ) ||
+            $direction->isWestOf(
+                $bounds1->getSouthEast(),
+                $bounds2->getSouthWest()
+            ) ||
+            $direction->isNorthOf(
+                $bounds1->getSouthWest(),
+                $bounds2->getNorthWest()
+            )
         ) {
             return false;
         }
