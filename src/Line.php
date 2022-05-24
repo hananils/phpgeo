@@ -228,7 +228,7 @@ class Line implements GeometryInterface
     {
         $slope1 =
             ($this->point2->getLat() - $this->point1->getLat()) /
-            ($this->point2->getLgn() - $this->point1->getLgn());
+            ($this->point2->getLng() - $this->point1->getLng());
         $slope2 =
             ($coordinate->getLat() - $this->point2->getLat()) /
             ($coordinate->getLng() - $this->point2->getLng());
