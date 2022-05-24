@@ -60,7 +60,7 @@ trait IntersectionTrait
      * Two geometries intersect if:
      *
      */
-    public function intersectsGeometry(Geometry $geometry): bool
+    public function intersectsGeometry($geometry): bool
     {
         if (is_a($geometry, 'Coordinate')) {
             return $this->contains($geometry);
