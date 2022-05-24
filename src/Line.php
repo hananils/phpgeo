@@ -226,16 +226,17 @@ class Line implements GeometryInterface
      */
     public function getOrientation(Coordinate $coordinate)
     {
-        $slope1 =
-            ($this->point2->getLat() - $this->point1->getLat()) /
-            ($this->point2->getLng() - $this->point1->getLng());
-        $slope2 =
-            ($coordinate->getLat() - $this->point2->getLat()) /
+        $crossproduct1 =
+            ($this->point2->getLat() - $this->point1->getLat()) *
             ($coordinate->getLng() - $this->point2->getLng());
+        $crossproduct2 =
+            ($this->point2->getLng() - $this->point1->getLng()) *
+            ($coordinate->getLat() - $this->point2->getLat());
+        $delta = $crossproduct1 - $crossproduct2;
 
-        if ($slope1 > $slope2) {
+        if ($delta > 0) {
             return self::ORIENTATION_CLOCKWISE;
-        } elseif ($slope1 < $slope2) {
+        } elseif ($delta < 0) {
             return self::ORIENTATION_ANTI_CLOCKWISE;
         }
 
