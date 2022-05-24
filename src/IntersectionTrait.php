@@ -18,13 +18,13 @@ trait IntersectionTrait
      */
     public function intersects(
         GeometryInterface $geometry,
-        bool $compareBounds = true
+        bool $precise = false
     ): bool {
-        if ($compareBounds === true) {
-            return $this->intersectsBounds($geometry->getBounds());
+        if ($precise === true) {
+            return $this->intersectsGeometry($geometry);
         }
 
-        return $this->intersectsGeometry($geometry);
+        return $this->intersectsBounds($geometry->getBounds());
     }
 
     public function intersectsBounds(Bounds $bounds2): bool
