@@ -20,6 +20,11 @@ trait IntersectionTrait
         GeometryInterface $geometry,
         bool $precise = false
     ): bool {
+        // Handle points
+        if (is_a($geometry, 'Location\Coordinate')) {
+            return $this->contains($geometry);
+        }
+
         if ($precise === true) {
             return $this->intersectsGeometry($geometry);
         }
@@ -62,10 +67,6 @@ trait IntersectionTrait
      */
     public function intersectsGeometry($geometry): bool
     {
-        if (is_a($geometry, 'Coordinate')) {
-            return $this->contains($geometry);
-        }
-
         $segments1 = $this->getSegments();
         $segments2 = $geometry->getSegments();
         $intersects = false;
